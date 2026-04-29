@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WanderStays – Contact Us</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  .contact-hero{padding:80px 24px 50px;text-align:center;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(197,165,90,.08) 0%,transparent 65%)}
+  .contact-hero h1{font-size:clamp(30px,5vw,48px);letter-spacing:-1.5px;margin-bottom:12px}
+  .contact-hero p{font-family:'DM Sans',sans-serif;color:var(--muted);font-size:14px;max-width:460px;margin:0 auto}
+  .contact-layout{max-width:1000px;margin:60px auto;padding:0 24px 80px;display:grid;grid-template-columns:1fr 1.4fr;gap:48px;align-items:start}
+  .contact-info h2{font-size:22px;margin-bottom:20px}
+  .info-item{display:flex;gap:14px;margin-bottom:24px;align-items:start}
+  .info-icon{width:42px;height:42px;border-radius:8px;background:rgba(197,165,90,.1);border:1px solid rgba(197,165,90,.2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+  .info-title{font-family:'DM Sans',sans-serif;font-size:12px;color:var(--dim);margin-bottom:3px;letter-spacing:.3px}
+  .info-val{font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text)}
+  .info-val a{color:var(--gold);text-decoration:none}
+  .info-val a:hover{text-decoration:underline}
+  .social-row{display:flex;gap:10px;margin-top:28px}
+  .social-btn{width:38px;height:38px;border-radius:6px;background:rgba(197,165,90,.08);border:1px solid rgba(197,165,90,.2);display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;transition:all .2s;text-decoration:none}
+  .social-btn:hover{background:rgba(197,165,90,.18);border-color:var(--gold)}
+  .contact-form-box{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:32px}
+  .contact-form-box h2{font-size:20px;margin-bottom:6px}
+  .contact-form-box p{font-family:'DM Sans',sans-serif;font-size:13px;color:var(--dim);margin-bottom:24px}
+  .char-count{font-family:'DM Sans',sans-serif;font-size:11px;color:var(--dim);text-align:right;margin-top:4px}
+  .form-success{display:none;text-align:center;padding:32px 0}
+  .form-success .icon{font-size:48px;margin-bottom:16px}
+  .form-success h3{font-size:20px;margin-bottom:8px}
+  .form-success p{font-family:'DM Sans',sans-serif;font-size:13px;color:var(--muted)}
+  .office-map{background:var(--bg2);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-top:32px}
+  .map-placeholder{height:200px;background:linear-gradient(135deg,#13131d,#1c1c2a);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+  .office-info{padding:16px;font-family:'DM Sans',sans-serif}
+  .offices-strip{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:48px 24px}
+  .offices-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:center}
+  .office-city{font-size:16px;font-weight:600;margin-bottom:6px}
+  .office-addr{font-family:'DM Sans',sans-serif;font-size:12px;color:var(--muted);line-height:1.6}
+  @media(max-width:768px){.contact-layout{grid-template-columns:1fr}.offices-inner{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="../index.php" class="brand">WanderStays</a>
+  <div class="nav-links">
+    <a href="../index.php" class="nav-link">Home</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="how-it-works.html" class="nav-link">How It Works</a>
+    <a href="contact.html" class="nav-link active">Contact</a>
+    <a href="../index.php" class="btn-gold" style="padding:7px 18px;font-size:12px">Sign In</a>
+  </div>
+</nav>
+<div id="notif-area"></div>
+
+<div class="contact-hero">
+  <p style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px">Get In Touch</p>
+  <h1>We'd love to <em style="color:var(--gold)">hear</em> from you</h1>
+  <p>Whether you're a traveller with a question or an owner wanting to list your property, our team responds within 24 hours.</p>
+</div>
+
+<!-- Offices strip -->
+<div class="offices-strip">
+  <div class="offices-inner">
+    <div>
+      <div class="office-city">🏙 New Delhi</div>
+      <div class="office-addr">12, Connaught Place<br>New Delhi – 110001<br><span style="color:var(--gold)">Head Office</span></div>
+    </div>
+    <div>
+      <div class="office-city">🌊 Mumbai</div>
+      <div class="office-addr">Unit 4B, BKC<br>Mumbai – 400051<br><span style="color:var(--gold)">West India</span></div>
+    </div>
+    <div>
+      <div class="office-city">🌿 Bengaluru</div>
+      <div class="office-addr">Indiranagar, 100ft Road<br>Bengaluru – 560038<br><span style="color:var(--gold)">South India</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Main contact layout -->
+<div class="contact-layout">
+
+  <!-- Left: Info -->
+  <div class="contact-info">
+    <h2>Contact Information</h2>
+    <div class="info-item">
+      <div class="info-icon">📧</div>
+      <div>
+        <div class="info-title">EMAIL</div>
+        <div class="info-val"><a href="mailto:hello@wanderstays.in">hello@wanderstays.in</a></div>
+        <div class="info-val" style="color:var(--dim);font-size:12px;margin-top:2px">We reply within 24 hours</div>
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-icon">📞</div>
+      <div>
+        <div class="info-title">PHONE</div>
+        <div class="info-val"><a href="tel:+911140001234">+91 11 4000 1234</a></div>
+        <div class="info-val" style="color:var(--dim);font-size:12px;margin-top:2px">Mon–Sat, 9 AM – 7 PM IST</div>
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-icon">💬</div>
+      <div>
+        <div class="info-title">WHATSAPP</div>
+        <div class="info-val"><a href="#">+91 98765 43210</a></div>
+        <div class="info-val" style="color:var(--dim);font-size:12px;margin-top:2px">Quick queries only</div>
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-icon">🏢</div>
+      <div>
+        <div class="info-title">REGISTERED OFFICE</div>
+        <div class="info-val">12, Connaught Place,<br>New Delhi – 110001, India</div>
+      </div>
+    </div>
+
+    <div class="social-row">
+      <a href="#" class="social-btn" title="Instagram">📸</a>
+      <a href="#" class="social-btn" title="Twitter / X">𝕏</a>
+      <a href="#" class="social-btn" title="Facebook">f</a>
+      <a href="#" class="social-btn" title="LinkedIn">in</a>
+      <a href="#" class="social-btn" title="YouTube">▶</a>
+    </div>
+
+    <div class="office-map" style="margin-top:28px">
+      <div class="map-placeholder">
+        <span style="font-size:36px">📍</span>
+        <span class="sf" style="font-size:12px;color:var(--muted)">New Delhi Head Office</span>
+        <a href="https://maps.google.com" target="_blank" class="btn-outline" style="padding:6px 16px;font-size:12px;margin-top:4px">Open in Maps</a>
+      </div>
+      <div class="office-info">
+        <p style="font-size:13px;font-weight:500;margin-bottom:2px">WanderStays Headquarters</p>
+        <p style="font-size:12px;color:var(--muted)">12, Connaught Place, New Delhi · Nearest Metro: Rajiv Chowk</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: Form -->
+  <div class="contact-form-box">
+    <div id="form-wrap">
+      <h2>Send us a message</h2>
+      <p>Fill in the form and we'll get back to you promptly.</p>
+
+      <div class="form-group">
+        <label>Your Name *</label>
+        <input type="text" id="c-name" placeholder="Full name" maxlength="100">
+        <p class="err" id="err-name" style="display:none">Name is required</p>
+      </div>
+      <div class="form-group">
+        <label>Email Address *</label>
+        <input type="email" id="c-email" placeholder="your@email.com">
+        <p class="err" id="err-email" style="display:none">Valid email required</p>
+      </div>
+      <div class="form-group">
+        <label>I am a</label>
+        <select id="c-role">
+          <option value="traveller">Traveller</option>
+          <option value="owner">Property Owner</option>
+          <option value="press">Press / Media</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Subject *</label>
+        <input type="text" id="c-subject" placeholder="What is this about?" maxlength="120">
+        <p class="err" id="err-subject" style="display:none">Subject is required</p>
+      </div>
+      <div class="form-group">
+        <label>Message * (min 20 characters)</label>
+        <textarea id="c-message" rows="5" placeholder="Tell us how we can help…" style="resize:vertical" maxlength="1000"></textarea>
+        <div class="char-count"><span id="char-num">0</span> / 1000</div>
+        <p class="err" id="err-msg" style="display:none">Message must be at least 20 characters</p>
+      </div>
+      <div class="form-group" style="display:flex;align-items:center;gap:10px">
+        <input type="checkbox" id="c-consent" style="width:auto;padding:0">
+        <label for="c-consent" style="margin:0;font-size:12px;color:var(--muted)">I agree to WanderStays storing my information to respond to this inquiry</label>
+      </div>
+      <p class="err" id="err-consent" style="display:none">Please accept to continue</p>
+      <button class="btn-gold btn-full" style="padding:13px;margin-top:8px" onclick="submitContact()">Send Message</button>
+    </div>
+
+    <div class="form-success" id="form-success">
+      <div class="icon">✉️</div>
+      <h3>Message sent!</h3>
+      <p>Thanks for reaching out. We'll reply to <strong id="reply-email"></strong> within 24 hours.</p>
+      <button class="btn-outline" style="margin-top:20px" onclick="resetForm()">Send Another</button>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p class="sf">© 2025 WanderStays — Discover Extraordinary India &nbsp;|&nbsp;
+    <a href="about.html" style="color:var(--gold);text-decoration:none">About</a> &nbsp;·&nbsp;
+    <a href="how-it-works.html" style="color:var(--gold);text-decoration:none">How It Works</a> &nbsp;·&nbsp;
+    <a href="contact.html" style="color:var(--gold);text-decoration:none">Contact</a>
+  </p>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+const msgArea = document.getElementById('c-message');
+const charNum = document.getElementById('char-num');
+if (msgArea) {
+  msgArea.addEventListener('input', () => { charNum.textContent = msgArea.value.length; });
+}
+
+function submitContact() {
+  let ok = true;
+  const name    = document.getElementById('c-name').value.trim();
+  const email   = document.getElementById('c-email').value.trim();
+  const subject = document.getElementById('c-subject').value.trim();
+  const message = document.getElementById('c-message').value.trim();
+  const consent = document.getElementById('c-consent').checked;
+
+  const show = (id, show) => { document.getElementById(id).style.display = show ? 'block' : 'none'; };
+  show('err-name',    !name);          if (!name) ok = false;
+  show('err-email',   !email.includes('@')); if (!email.includes('@')) ok = false;
+  show('err-subject', !subject);       if (!subject) ok = false;
+  show('err-msg',     message.length < 20); if (message.length < 20) ok = false;
+  show('err-consent', !consent);       if (!consent) ok = false;
+
+  if (!ok) return;
+
+  // Simulate submission (no PHP needed here)
+  document.getElementById('reply-email').textContent = email;
+  document.getElementById('form-wrap').style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+  showNotif('Message sent successfully!');
+}
+
+function resetForm() {
+  document.getElementById('form-wrap').style.display = 'block';
+  document.getElementById('form-success').style.display = 'none';
+  ['c-name','c-email','c-subject','c-message'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('c-consent').checked = false;
+  charNum.textContent = '0';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WanderStays – Page Not Found</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .err-page{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px 24px;background:radial-gradient(ellipse 60% 50% at 50% 40%,rgba(197,165,90,.07) 0%,transparent 65%)}
+  .err-code{font-family:'DM Sans',sans-serif;font-size:clamp(80px,18vw,180px);font-weight:700;color:rgba(197,165,90,.12);letter-spacing:-8px;line-height:1;margin-bottom:-20px}
+  .err-icon{font-size:56px;margin-bottom:20px}
+  .err-title{font-size:clamp(24px,4vw,36px);letter-spacing:-1px;margin-bottom:12px}
+  .err-sub{font-family:'DM Sans',sans-serif;font-size:14px;color:var(--muted);max-width:420px;margin:0 auto 32px;line-height:1.7}
+  .err-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:48px}
+  .suggestions{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;max-width:600px;margin:0 auto}
+  .sug-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:18px;text-decoration:none;color:inherit;transition:all .3s;display:block}
+  .sug-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+  .sug-icon{font-size:26px;margin-bottom:8px}
+  .sug-title{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--text)}
+  .sug-desc{font-family:'DM Sans',sans-serif;font-size:11px;color:var(--dim);margin-top:3px}
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <a href="index.php" class="brand">WanderStays</a>
+  <div class="nav-links">
+    <a href="index.php" class="nav-link">Home</a>
+    <a href="static/about.html" class="nav-link">About</a>
+    <a href="static/contact.html" class="nav-link">Contact</a>
+    <a href="index.php" class="btn-gold" style="padding:7px 18px;font-size:12px">Sign In</a>
+  </div>
+</nav>
+
+<div class="err-page">
+  <div>
+    <div class="err-code">404</div>
+    <div class="err-icon">🗺</div>
+    <h1 class="err-title">Lost on the trail?</h1>
+    <p class="err-sub">The page you're looking for doesn't exist, was moved, or the link may have expired. Let's get you back on track.</p>
+    <div class="err-links">
+      <a href="index.php" class="btn-gold" style="padding:12px 28px">Back to Home</a>
+      <a href="static/contact.html" class="btn-outline" style="padding:12px 28px">Contact Support</a>
+    </div>
+    <p style="font-family:'DM Sans',sans-serif;font-size:12px;color:var(--dim);margin-bottom:20px">Or try one of these:</p>
+    <div class="suggestions">
+      <a href="index.php" class="sug-card"><div class="sug-icon">🏔</div><div class="sug-title">Explore</div><div class="sug-desc">Browse destinations</div></a>
+      <a href="index.php" class="sug-card"><div class="sug-icon">🧳</div><div class="sug-title">My Trips</div><div class="sug-desc">Your booking history</div></a>
+      <a href="static/how-it-works.html" class="sug-card"><div class="sug-icon">❓</div><div class="sug-title">How It Works</div><div class="sug-desc">Platform guide</div></a>
+      <a href="static/contact.html" class="sug-card"><div class="sug-icon">✉️</div><div class="sug-title">Contact</div><div class="sug-desc">Get in touch</div></a>
+    </div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
