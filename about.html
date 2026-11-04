@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WanderStays – About Us</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  .hero{min-height:80vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px 20px;background:radial-gradient(ellipse 70% 60% at 50% 40%,rgba(197,165,90,.10) 0%,transparent 70%);position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=1400&q=60') center/cover no-repeat;opacity:.08}
+  .hero-inner{position:relative;max-width:700px}
+  .eyebrow{font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:14px}
+  .hero h1{font-size:clamp(36px,6vw,64px);letter-spacing:-2px;line-height:1.05;margin-bottom:20px}
+  .hero p{font-family:'DM Sans',sans-serif;font-size:16px;color:var(--muted);line-height:1.7;max-width:520px;margin:0 auto 32px}
+  .divider{width:60px;height:1px;background:var(--gold);margin:0 auto 48px;opacity:.4}
+  .section{padding:80px 24px}
+  .section-inner{max-width:1100px;margin:0 auto}
+  .section-title{font-size:clamp(22px,3vw,34px);letter-spacing:-0.5px;margin-bottom:10px}
+  .section-sub{font-family:'DM Sans',sans-serif;color:var(--muted);font-size:14px;margin-bottom:48px}
+  .values-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:24px}
+  .value-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:28px;transition:border .3s}
+  .value-card:hover{border-color:var(--border2)}
+  .value-icon{font-size:36px;margin-bottom:16px}
+  .value-title{font-size:17px;font-weight:600;margin-bottom:8px}
+  .value-text{font-family:'DM Sans',sans-serif;font-size:13px;color:var(--muted);line-height:1.6}
+  .team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:24px}
+  .team-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:28px;text-align:center;transition:all .3s}
+  .team-card:hover{border-color:var(--border2);transform:translateY(-3px)}
+  .team-avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#b8943f,var(--gold));display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:#0a0a0f;margin:0 auto 16px}
+  .team-name{font-size:16px;font-weight:600;margin-bottom:4px}
+  .team-role{font-family:'DM Sans',sans-serif;font-size:12px;color:var(--gold)}
+  .team-bio{font-family:'DM Sans',sans-serif;font-size:12px;color:var(--dim);margin-top:8px;line-height:1.5}
+  .stat-strip{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:48px 24px}
+  .stat-strip-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+  .strip-val{font-size:36px;font-weight:700;color:var(--gold);letter-spacing:-1px}
+  .strip-lbl{font-family:'DM Sans',sans-serif;font-size:12px;color:var(--dim);margin-top:4px}
+  .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .story-img{border-radius:10px;overflow:hidden;height:380px}
+  .story-img img{width:100%;height:100%;object-fit:cover}
+  .story-text h2{font-size:28px;margin-bottom:14px}
+  .story-text p{font-family:'DM Sans',sans-serif;font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:16px}
+  .cta-band{background:linear-gradient(135deg,rgba(197,165,90,.12),rgba(197,165,90,.05));border:1px solid rgba(197,165,90,.2);border-radius:12px;padding:56px 32px;text-align:center;margin:60px 0}
+  .cta-band h2{font-size:32px;margin-bottom:10px}
+  .cta-band p{font-family:'DM Sans',sans-serif;color:var(--muted);margin-bottom:28px}
+  .btn-pair{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  @media(max-width:768px){.story-grid{grid-template-columns:1fr}.stat-strip-inner{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+
+<!-- Static Navbar -->
+<nav class="navbar">
+  <a href="../index.php" class="brand">WanderStays</a>
+  <div class="nav-links">
+    <a href="../index.php" class="nav-link">Home</a>
+    <a href="about.html" class="nav-link active">About</a>
+    <a href="how-it-works.html" class="nav-link">How It Works</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+    <a href="../index.php" class="btn-gold" style="padding:7px 18px;font-size:12px">Sign In</a>
+  </div>
+</nav>
+
+<div id="notif-area"></div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Our Story</p>
+    <h1>Built for those who <em style="color:var(--gold)">wander</em></h1>
+    <p>WanderStays was born from a simple belief — that finding an extraordinary place to stay should feel as magical as the journey itself. We connect India's finest properties with the travellers who deserve them.</p>
+    <a href="../index.php" class="btn-gold" style="padding:13px 32px;font-size:14px">Start Exploring</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Stats Strip -->
+<div class="stat-strip">
+  <div class="stat-strip-inner">
+    <div><div class="strip-val">1,200+</div><div class="strip-lbl">Properties Listed</div></div>
+    <div><div class="strip-val">18</div><div class="strip-lbl">States Covered</div></div>
+    <div><div class="strip-val">45K+</div><div class="strip-lbl">Happy Travellers</div></div>
+    <div><div class="strip-val">4.8★</div><div class="strip-lbl">Average Rating</div></div>
+  </div>
+</div>
+
+<!-- Story Section -->
+<section class="section">
+  <div class="section-inner">
+    <div class="story-grid">
+      <div class="story-img">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="Mountains of India">
+      </div>
+      <div class="story-text">
+        <p style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:12px">How We Started</p>
+        <h2>A weekend trip that changed everything</h2>
+        <p>In 2022, our founders struggled to find a genuine, curated stay in Himachal Pradesh — one that felt local, personal, and trustworthy. Every platform showed the same generic listings with unreliable photos and hidden surprises at check-in.</p>
+        <p>So they built the alternative. WanderStays launched with 12 handpicked properties and a single promise: every listing is verified, every owner is real, and every traveller deserves transparency.</p>
+        <p>Today we span 18 states and connect thousands of property owners with travellers who care about authentic experiences — from houseboat stays in Kerala to mountain villas in Uttarakhand.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Values -->
+<section class="section" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="section-inner">
+    <p class="eyebrow" style="text-align:center">What We Stand For</p>
+    <h2 class="section-title" style="text-align:center">Our Values</h2>
+    <p class="section-sub" style="text-align:center">The principles that guide every decision we make</p>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🤝</div>
+        <div class="value-title">Trust First</div>
+        <p class="value-text">Every property is verified. Every owner is accountable. We don't list what we wouldn't stay in ourselves.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🌿</div>
+        <div class="value-title">Local Authenticity</div>
+        <p class="value-text">We champion homestays, heritage properties, and owner-run stays that tell the real story of a place.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">💬</div>
+        <div class="value-title">Transparent Pricing</div>
+        <p class="value-text">Travellers can negotiate. Owners control their rates. No hidden platform fees buried in fine print.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🔒</div>
+        <div class="value-title">Safe Payments</div>
+        <p class="value-text">Payments only flow after confirmed acceptance. Your money is protected until check-in is secured.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">⭐</div>
+        <div class="value-title">Honest Reviews</div>
+        <p class="value-text">Only verified guests who completed a paid stay can leave a review. No fake ratings, ever.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🇮🇳</div>
+        <div class="value-title">Made for India</div>
+        <p class="value-text">Built around Indian geography, pricing norms, UPI payments, and the way Indians actually travel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Team -->
+<section class="section">
+  <div class="section-inner">
+    <p class="eyebrow" style="text-align:center">The People</p>
+    <h2 class="section-title" style="text-align:center">Meet the Team</h2>
+    <p class="section-sub" style="text-align:center">A small team with a big obsession for travel</p>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">A</div>
+        <div class="team-name">Arjun Mehta</div>
+        <div class="team-role">Co-Founder & CEO</div>
+        <div class="team-bio">Former product lead at a travel startup. Has stayed in 200+ properties across India and still prefers the ones with a story.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">P</div>
+        <div class="team-name">Priya Nair</div>
+        <div class="team-role">Co-Founder & CTO</div>
+        <div class="team-bio">Full-stack engineer who built the first version of WanderStays in a weekend. Kerala native with a soft spot for backwaters.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">R</div>
+        <div class="team-name">Rohan Kapoor</div>
+        <div class="team-role">Head of Owner Relations</div>
+        <div class="team-bio">Spent three years on-boarding heritage properties across Rajasthan. Speaks four languages and negotiates like a local everywhere.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">S</div>
+        <div class="team-name">Sneha Das</div>
+        <div class="team-role">Head of Traveller Experience</div>
+        <div class="team-bio">Handles every edge case with grace. Her golden rule: a traveller who had a problem that got solved is more loyal than one who had none.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+  <div class="section-inner">
+    <div class="cta-band">
+      <h2>Ready to wander?</h2>
+      <p>Join thousands of travellers discovering India's most extraordinary stays</p>
+      <div class="btn-pair">
+        <a href="../index.php" class="btn-gold" style="padding:13px 32px">Explore as Traveller</a>
+        <a href="../index.php" class="btn-outline" style="padding:13px 32px">List Your Property</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p class="sf">© 2025 WanderStays — Discover Extraordinary India &nbsp;|&nbsp;
+    <a href="about.html" style="color:var(--gold);text-decoration:none">About</a> &nbsp;·&nbsp;
+    <a href="how-it-works.html" style="color:var(--gold);text-decoration:none">How It Works</a> &nbsp;·&nbsp;
+    <a href="contact.html" style="color:var(--gold);text-decoration:none">Contact</a>
+  </p>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

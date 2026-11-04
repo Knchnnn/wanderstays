@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WanderStays – Discover Extraordinary India</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+/* ── Landing-specific styles ── */
+.land-nav{background:transparent;border-bottom:1px solid rgba(197,165,90,.1);position:fixed;top:0;left:0;right:0;z-index:300;transition:background .4s}
+.land-nav.scrolled{background:#0c0c16;border-color:rgba(197,165,90,.18)}
+.land-hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:100px 24px 60px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=1600&q=60') center/cover no-repeat;opacity:.18}
+.hero-glow{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 40%,rgba(197,165,90,.13) 0%,transparent 65%)}
+.hero-inner{position:relative;max-width:780px;margin:0 auto}
+.hero-eyebrow{font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:18px}
+.hero-h1{font-size:clamp(40px,7vw,76px);letter-spacing:-3px;line-height:1.0;margin-bottom:22px}
+.hero-sub{font-family:'DM Sans',sans-serif;font-size:16px;color:var(--muted);line-height:1.7;max-width:540px;margin:0 auto 36px}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:56px}
+.hero-scroll{font-family:'DM Sans',sans-serif;font-size:12px;color:var(--dim);letter-spacing:2px;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px}
+.scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:.3;transform:scaleY(.8)}50%{opacity:1;transform:scaleY(1)}}
+.trust-strip{background:rgba(197,165,90,.04);border-top:1px solid rgba(197,165,90,.1);border-bottom:1px solid rgba(197,165,90,.1);padding:20px 24px}
+.trust-inner{max-width:800px;margin:0 auto;display:flex;justify-content:center;align-items:center;gap:40px;flex-wrap:wrap}
+.trust-item{font-family:'DM Sans',sans-serif;font-size:12px;color:var(--muted);display:flex;align-items:center;gap:7px}
+.trust-item span.num{color:var(--gold);font-weight:500;font-size:14px}
+
+/* Featured destinations */
+.section{padding:80px 24px}
+.section-inner{max-width:1140px;margin:0 auto}
+.section-eyebrow{font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;text-align:center}
+.section-h2{font-size:clamp(24px,4vw,38px);letter-spacing:-1px;text-align:center;margin-bottom:8px}
+.section-p{font-family:'DM Sans',sans-serif;font-size:14px;color:var(--muted);text-align:center;margin-bottom:48px;max-width:480px;margin-left:auto;margin-right:auto}
+
+/* Destination cards (static) */
+.dest-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.dest-card{border-radius:10px;overflow:hidden;position:relative;height:320px;cursor:pointer;transition:transform .4s}
+.dest-card:hover{transform:scale(1.02)}
+.dest-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.dest-card:hover img{transform:scale(1.06)}
+.dest-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,15,.85) 0%,rgba(10,10,15,.1) 55%,transparent 100%)}
+.dest-card-body{position:absolute;bottom:0;left:0;right:0;padding:20px}
+.dest-card-body h3{font-size:18px;font-weight:700;margin-bottom:4px}
+.dest-card-body p{font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(232,228,217,.7)}
+.dest-tag{display:inline-block;background:rgba(197,165,90,.25);border:1px solid rgba(197,165,90,.4);color:var(--gold);padding:2px 8px;border-radius:20px;font-size:10px;font-family:'DM Sans',sans-serif;margin-bottom:6px}
+
+/* How it works (mini) */
+.steps-mini{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:24px}
+.step-mini{text-align:center;padding:28px 20px}
+.step-mini-icon{font-size:40px;margin-bottom:16px}
+.step-mini-num{width:28px;height:28px;border-radius:50%;background:rgba(197,165,90,.15);border:1px solid rgba(197,165,90,.3);display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;color:var(--gold);margin:0 auto 12px}
+.step-mini h3{font-size:16px;margin-bottom:8px}
+.step-mini p{font-family:'DM Sans',sans-serif;font-size:13px;color:var(--muted);line-height:1.6}
+
+/* Types showcase */
+.types-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+.type-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:22px 16px;text-align:center;cursor:pointer;transition:all .3s}
+.type-card:hover{border-color:var(--border2);transform:translateY(-3px)}
+.type-icon{font-size:32px;margin-bottom:10px}
+.type-name{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;margin-bottom:4px}
+.type-count{font-family:'DM Sans',sans-serif;font-size:11px;color:var(--dim)}
+
+/* Testimonials */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.testi-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:24px;transition:border .3s}
+.testi-card:hover{border-color:var(--border2)}
+.testi-stars{color:var(--gold);font-size:14px;margin-bottom:12px}
+.testi-text{font-family:'DM Sans',sans-serif;font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:10px}
+.testi-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#b8943f,var(--gold));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#0a0a0f;font-family:'DM Sans',sans-serif}
+.testi-name{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500}
+.testi-loc{font-family:'DM Sans',sans-serif;font-size:11px;color:var(--dim)}
+
+/* Owner CTA banner */
+.owner-band{background:linear-gradient(135deg,rgba(197,165,90,.12),rgba(197,165,90,.04));border:1px solid rgba(197,165,90,.2);border-radius:14px;padding:60px 40px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center}
+.owner-band h2{font-size:28px;letter-spacing:-0.5px;margin-bottom:8px}
+.owner-band p{font-family:'DM Sans',sans-serif;font-size:14px;color:var(--muted);line-height:1.6;max-width:480px}
+.owner-band-btns{display:flex;flex-direction:column;gap:10px;min-width:180px}
+
+/* Stats */
+.stats-band{padding:64px 24px;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stats-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.stat-v{font-size:38px;font-weight:700;color:var(--gold);letter-spacing:-2px}
+.stat-l{font-family:'DM Sans',sans-serif;font-size:12px;color:var(--dim);margin-top:4px}
+
+/* Footer */
+.land-footer{background:#080810;border-top:1px solid var(--border);padding:56px 24px 32px}
+.footer-inner{max-width:1140px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand{font-size:22px;font-weight:700;color:var(--gold);letter-spacing:-0.5px;margin-bottom:12px}
+.footer-tagline{font-family:'DM Sans',sans-serif;font-size:13px;color:var(--dim);line-height:1.6;max-width:220px;margin-bottom:20px}
+.footer-col h4{font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:14px}
+.footer-col a{display:block;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--dim);text-decoration:none;margin-bottom:8px;transition:color .2s}
+.footer-col a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-family:'DM Sans',sans-serif;font-size:12px;color:var(--dim)}
+.footer-bottom a{color:var(--dim);text-decoration:none;margin-left:16px;transition:color .2s}
+.footer-bottom a:hover{color:var(--gold)}
+
+@media(max-width:900px){.owner-band{grid-template-columns:1fr}.stats-inner{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.hero-h1{letter-spacing:-2px}.footer-grid{grid-template-columns:1fr}.footer-bottom{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+
+<!-- Fixed transparent navbar -->
+<nav class="navbar land-nav" id="land-nav">
+  <a href="#" class="brand">WanderStays</a>
+  <div class="nav-links">
+    <a href="about.html" class="nav-link">About</a>
+    <a href="how-it-works.html" class="nav-link">How It Works</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+    <a href="../index.php" class="btn-outline" style="padding:7px 18px;font-size:12px">Sign In</a>
+    <a href="../index.php" class="btn-gold" style="padding:7px 18px;font-size:12px">Get Started</a>
+  </div>
+</nav>
+<div id="notif-area"></div>
+
+<!-- ── HERO ── -->
+<section class="land-hero">
+  <div class="hero-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">India's finest stays</div>
+    <h1 class="hero-h1">Find your <em style="color:var(--gold)">perfect</em><br>place to stay</h1>
+    <p class="hero-sub">Hotels, resorts, villas, Airbnbs and homestays across 15+ Indian states — curated, verified, and bookable with price negotiation.</p>
+    <div class="hero-btns">
+      <a href="../index.php" class="btn-gold" style="padding:14px 36px;font-size:15px">Explore Destinations</a>
+      <a href="../index.php" class="btn-outline" style="padding:14px 36px;font-size:15px">List Your Property</a>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>scroll</span>
+    </div>
+  </div>
+</section>
+
+<!-- Trust strip -->
+<div class="trust-strip">
+  <div class="trust-inner">
+    <div class="trust-item">✓ <span class="num">1,200+</span> verified properties</div>
+    <div class="trust-item">✓ <span class="num">45K+</span> happy travellers</div>
+    <div class="trust-item">✓ <span class="num">18</span> states covered</div>
+    <div class="trust-item">✓ Card &amp; UPI payments</div>
+    <div class="trust-item">✓ Price negotiation</div>
+    <div class="trust-item">✓ Verified reviews only</div>
+  </div>
+</div>
+
+<!-- ── FEATURED DESTINATIONS ── -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-eyebrow">Handpicked</div>
+    <h2 class="section-h2">Featured Destinations</h2>
+    <p class="section-p">From snow-capped Himalayas to tropical backwaters — India's most extraordinary places to stay.</p>
+    <div class="dest-grid">
+      <a href="../index.php" style="text-decoration:none;color:inherit">
+      <div class="dest-card">
+        <img src="https://images.unsplash.com/photo-1477587458883-47145ed94245?w=600&q=70" alt="Jaipur" loading="lazy">
+        <div class="dest-card-overlay"></div>
+        <div class="dest-card-body">
+          <span class="dest-tag">Rajasthan</span>
+          <h3>Jaipur</h3>
+          <p>The Pink City — palaces, forts &amp; desert safaris</p>
+        </div>
+      </div>
+      </a>
+      <a href="../index.php" style="text-decoration:none;color:inherit">
+      <div class="dest-card">
+        <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=600&q=70" alt="Goa" loading="lazy">
+        <div class="dest-card-overlay"></div>
+        <div class="dest-card-body">
+          <span class="dest-tag">Goa</span>
+          <h3>North Goa</h3>
+          <p>Golden beaches, Portuguese villas &amp; seafood</p>
+        </div>
+      </div>
+      </a>
+      <a href="../index.php" style="text-decoration:none;color:inherit">
+      <div class="dest-card">
+        <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600&q=70" alt="Kerala" loading="lazy">
+        <div class="dest-card-overlay"></div>
+        <div class="dest-card-body">
+          <span class="dest-tag">Kerala</span>
+          <h3>Alleppey</h3>
+          <p>Houseboat stays on emerald backwaters</p>
+        </div>
+      </div>
+      </a>
+      <a href="../index.php" style="text-decoration:none;color:inherit">
+      <div class="dest-card">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=70" alt="Manali" loading="lazy">
+        <div class="dest-card-overlay"></div>
+        <div class="dest-card-body">
+          <span class="dest-tag">Himachal Pradesh</span>
+          <h3>Manali</h3>
+          <p>Snow valleys, adventure sports &amp; mountain villas</p>
+        </div>
+      </div>
+      </a>
+      <a href="../index.php" style="text-decoration:none;color:inherit">
+      <div class="dest-card">
+        <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=70" alt="Rishikesh" loading="lazy">
+        <div class="dest-card-overlay"></div>
+        <div class="dest-card-body">
+          <span class="dest-tag">Uttarakhand</span>
+          <h3>Rishikesh</h3>
+          <p>Yoga capital — Ganges, rafting &amp; ashrams</p>
+        </div>
+      </div>
+      </a>
+      <a href="../index.php" style="text-decoration:none;color:inherit">
+      <div class="dest-card">
+        <img src="https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?w=600&q=70" alt="Udaipur" loading="lazy">
+        <div class="dest-card-overlay"></div>
+        <div class="dest-card-body">
+          <span class="dest-tag">Rajasthan</span>
+          <h3>Udaipur</h3>
+          <p>Lake City — romantic palaces &amp; heritage stays</p>
+        </div>
+      </div>
+      </a>
+    </div>
+    <div style="text-align:center;margin-top:36px">
+      <a href="../index.php" class="btn-outline" style="padding:12px 32px">View All Destinations →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS (mini) ── -->
+<section class="section" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="section-inner">
+    <div class="section-eyebrow">Simple Process</div>
+    <h2 class="section-h2">How WanderStays works</h2>
+    <p class="section-p">Book your perfect stay in four easy steps</p>
+    <div class="steps-mini">
+      <div class="step-mini">
+        <div class="step-mini-icon">🔍</div>
+        <div class="step-mini-num">1</div>
+        <h3>Explore</h3>
+        <p>Browse destinations by state, property type, and price. Find the place that matches your mood.</p>
+      </div>
+      <div class="step-mini">
+        <div class="step-mini-icon">💬</div>
+        <div class="step-mini-num">2</div>
+        <h3>Bargain</h3>
+        <p>Offer your price — you can negotiate below the listed rate. The owner decides to accept or counter.</p>
+      </div>
+      <div class="step-mini">
+        <div class="step-mini-icon">✅</div>
+        <div class="step-mini-num">3</div>
+        <h3>Get Confirmed</h3>
+        <p>Once the owner accepts your request, you receive a confirmation and proceed to secure payment.</p>
+      </div>
+      <div class="step-mini">
+        <div class="step-mini-icon">🏡</div>
+        <div class="step-mini-num">4</div>
+        <h3>Stay &amp; Review</h3>
+        <p>Enjoy your stay. Afterwards, share your honest experience to help future travellers.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px">
+      <a href="how-it-works.html" class="btn-gold" style="padding:12px 30px">Full Guide →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROPERTY TYPES ── -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-eyebrow">Every Style</div>
+    <h2 class="section-h2">Property types</h2>
+    <p class="section-p">Whatever your travel style, we have the right stay.</p>
+    <div class="types-grid">
+      <div class="type-card" onclick="window.location='../index.php'">
+        <div class="type-icon">🏨</div>
+        <div class="type-name">Hotels</div>
+        <div class="type-count">Full service stays</div>
+      </div>
+      <div class="type-card" onclick="window.location='../index.php'">
+        <div class="type-icon">🌴</div>
+        <div class="type-name">Resorts</div>
+        <div class="type-count">Pool &amp; spa escapes</div>
+      </div>
+      <div class="type-card" onclick="window.location='../index.php'">
+        <div class="type-icon">🏡</div>
+        <div class="type-name">Villas</div>
+        <div class="type-count">Private luxury</div>
+      </div>
+      <div class="type-card" onclick="window.location='../index.php'">
+        <div class="type-icon">🗝</div>
+        <div class="type-name">Airbnb</div>
+        <div class="type-count">Live like a local</div>
+      </div>
+      <div class="type-card" onclick="window.location='../index.php'">
+        <div class="type-icon">🤝</div>
+        <div class="type-name">Homestays</div>
+        <div class="type-count">Family hosted</div>
+      </div>
+      <div class="type-card" onclick="window.location='../index.php'">
+        <div class="type-icon">🏕</div>
+        <div class="type-name">Cottages</div>
+        <div class="type-count">Hillside retreats</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<div class="stats-band">
+  <div class="stats-inner">
+    <div><div class="stat-v" data-target="1200">0</div><div class="stat-l">Properties Listed</div></div>
+    <div><div class="stat-v" data-target="18">0</div><div class="stat-l">States Covered</div></div>
+    <div><div class="stat-v" data-target="45000">0</div><div class="stat-l">Happy Travellers</div></div>
+    <div><div class="stat-v" data-target="48">0</div><div class="stat-l">Avg Rating (×10)</div></div>
+  </div>
+</div>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-eyebrow">Guest Stories</div>
+    <h2 class="section-h2">What travellers say</h2>
+    <p class="section-p">Real reviews from real guests who completed a verified stay.</p>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Negotiated ₹500 off the nightly rate and the owner accepted within the hour. The villa in Manali was breathtaking — exactly as described, photos were accurate."</p>
+        <div class="testi-author"><div class="testi-avatar">A</div><div><div class="testi-name">Aanya Kapoor</div><div class="testi-loc">Delhi · stayed in Manali</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"The houseboat in Alleppey was a dream. Booking was so simple — I sent a request, the owner set a 24-hour deadline, paid via UPI, and we were on the water."</p>
+        <div class="testi-author"><div class="testi-avatar">R</div><div><div class="testi-name">Rohit Menon</div><div class="testi-loc">Bengaluru · stayed in Kerala</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★☆</div>
+        <p class="testi-text">"My first offer was rejected but I revised it slightly and it was accepted the same evening. Really appreciate that the platform gives you a second chance rather than just blocking you."</p>
+        <div class="testi-author"><div class="testi-avatar">P</div><div><div class="testi-name">Priya Shah</div><div class="testi-loc">Mumbai · stayed in Goa</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"As a property owner listing on WanderStays was painless. Uploaded 8 photos, set my price, and had my first booking within 3 days. The dashboard makes managing requests effortless."</p>
+        <div class="testi-author"><div class="testi-avatar">S</div><div><div class="testi-name">Suresh Kumar</div><div class="testi-loc">Alappuzha · Property Owner</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Travelled solo to Rishikesh and stayed at a riverside Airbnb. The yoga sessions were included in the price — something I discovered in the amenities list. Best trip of the year."</p>
+        <div class="testi-author"><div class="testi-avatar">N</div><div><div class="testi-name">Nisha Verma</div><div class="testi-loc">Pune · stayed in Rishikesh</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Heritage haveli in Jaipur at a price I actually bargained myself. The transparency of this platform — showing exactly what I offered vs listed price — is something no other site does."</p>
+        <div class="testi-author"><div class="testi-avatar">K</div><div><div class="testi-name">Karan Batra</div><div class="testi-loc">Chandigarh · stayed in Jaipur</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── OWNER BAND ── -->
+<section class="section" style="padding-top:20px;padding-bottom:80px">
+  <div class="section-inner">
+    <div class="owner-band">
+      <div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:12px">For Property Owners</div>
+        <h2>Own a property in India?<br><em style="color:var(--gold)">List it for free.</em></h2>
+        <p style="margin-top:10px">Reach thousands of verified travellers. Upload your photos, set your price, accept requests on your own terms. No subscription, no upfront fee — you only earn.</p>
+        <ul style="font-family:'DM Sans',sans-serif;font-size:13px;color:var(--muted);padding-left:18px;margin-top:14px;line-height:2">
+          <li>Upload up to 8 photos per property (drag &amp; drop)</li>
+          <li>Accept or reject booking requests with one click</li>
+          <li>Set acceptance deadlines to keep bookings moving</li>
+          <li>Track revenue, ratings and reviews in your dashboard</li>
+          <li>Full control — no forced discounts or algorithm penalties</li>
+        </ul>
+      </div>
+      <div class="owner-band-btns">
+        <a href="../index.php" class="btn-gold" style="padding:13px 28px;text-align:center">List Your Property</a>
+        <a href="how-it-works.html" class="btn-outline" style="padding:12px 28px;text-align:center">See How It Works</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="land-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">WanderStays</div>
+        <p class="footer-tagline">Connecting India's finest properties with the travellers who deserve them.</p>
+        <div style="display:flex;gap:8px">
+          <a href="#" style="width:34px;height:34px;border-radius:6px;background:rgba(197,165,90,.1);border:1px solid rgba(197,165,90,.2);display:flex;align-items:center;justify-content:center;font-size:14px;text-decoration:none">📸</a>
+          <a href="#" style="width:34px;height:34px;border-radius:6px;background:rgba(197,165,90,.1);border:1px solid rgba(197,165,90,.2);display:flex;align-items:center;justify-content:center;font-size:14px;text-decoration:none;color:var(--text)">𝕏</a>
+          <a href="#" style="width:34px;height:34px;border-radius:6px;background:rgba(197,165,90,.1);border:1px solid rgba(197,165,90,.2);display:flex;align-items:center;justify-content:center;font-size:14px;text-decoration:none">f</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="../index.php">Browse Destinations</a>
+        <a href="../index.php">Hotels</a>
+        <a href="../index.php">Resorts</a>
+        <a href="../index.php">Villas</a>
+        <a href="../index.php">Homestays</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="about.html">About Us</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="contact.html">Contact</a>
+        <a href="setup-guide.html">Setup Guide</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="terms.html">Terms of Service</a>
+        <a href="terms.html#privacy">Privacy Policy</a>
+        <a href="terms.html#cancellation">Cancellation Policy</a>
+        <a href="terms.html#cookies">Cookie Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 WanderStays Pvt. Ltd. · Made with ❤ for India</p>
+      <div>
+        <a href="terms.html">Terms</a>
+        <a href="terms.html#privacy">Privacy</a>
+        <a href="contact.html">Support</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+// Scroll-aware navbar
+window.addEventListener('scroll', () => {
+  document.getElementById('land-nav').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Animated counters
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target);
+  const duration = 1800;
+  const start = performance.now();
+  function update(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    const val = Math.floor(ease * target);
+    el.textContent = val >= 1000 ? (val >= 10000 ? Math.floor(val/1000)+'K+' : val.toLocaleString('en-IN')) : val;
+    if (progress < 1) requestAnimationFrame(update);
+    else el.textContent = target >= 10000 ? Math.floor(target/1000)+'K+' : target >= 1000 ? target.toLocaleString('en-IN') : target;
+  }
+  requestAnimationFrame(update);
+}
+
+// Trigger counters when stats section is visible
+const statsEls = document.querySelectorAll('.stat-v[data-target]');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { animateCounter(e.target); observer.unobserve(e.target); } });
+}, { threshold: 0.3 });
+statsEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

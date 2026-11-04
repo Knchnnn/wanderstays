@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WanderStays – How It Works</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  .hiw-hero{padding:80px 24px 60px;text-align:center;background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(197,165,90,.09) 0%,transparent 65%)}
+  .hiw-hero h1{font-size:clamp(32px,5vw,52px);letter-spacing:-1.5px;margin-bottom:14px}
+  .hiw-hero p{font-family:'DM Sans',sans-serif;color:var(--muted);font-size:15px;max-width:520px;margin:0 auto}
+  .role-tabs{display:flex;justify-content:center;gap:0;margin:40px auto 0;max-width:360px;background:#0c0c16;border-radius:5px;padding:4px}
+  .role-tab{flex:1;padding:10px;border:none;border-radius:3px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;transition:all .2s;background:transparent;color:var(--muted)}
+  .role-tab.active{background:var(--gold);color:#0a0a0f}
+  .steps-section{display:none;max-width:900px;margin:60px auto;padding:0 24px}
+  .steps-section.active{display:block}
+  .step{display:grid;grid-template-columns:80px 1fr;gap:28px;align-items:start;margin-bottom:48px;position:relative}
+  .step:not(:last-child)::after{content:'';position:absolute;left:39px;top:80px;width:2px;height:calc(100% - 40px);background:linear-gradient(to bottom,rgba(197,165,90,.3),transparent)}
+  .step-num{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,rgba(197,165,90,.15),rgba(197,165,90,.05));border:1px solid rgba(197,165,90,.3);display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:700;color:var(--gold);flex-shrink:0}
+  .step-body h3{font-size:20px;margin-bottom:8px;margin-top:16px}
+  .step-body p{font-family:'DM Sans',sans-serif;font-size:14px;color:var(--muted);line-height:1.7}
+  .step-body .tip{background:rgba(197,165,90,.07);border:1px solid rgba(197,165,90,.18);border-radius:4px;padding:10px 14px;margin-top:12px;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--gold)}
+  .step-img{margin-top:16px;border-radius:8px;overflow:hidden;height:180px}
+  .step-img img{width:100%;height:100%;object-fit:cover}
+  .faq-section{background:var(--bg2);border-top:1px solid var(--border);padding:72px 24px}
+  .faq-inner{max-width:740px;margin:0 auto}
+  .faq-title{font-size:28px;text-align:center;margin-bottom:8px}
+  .faq-sub{font-family:'DM Sans',sans-serif;font-size:13px;color:var(--dim);text-align:center;margin-bottom:40px}
+  .faq-item{border-bottom:1px solid var(--border);padding:20px 0;cursor:pointer}
+  .faq-q{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .faq-q span.arr{color:var(--gold);font-size:16px;transition:transform .3s;flex-shrink:0}
+  .faq-a{font-family:'DM Sans',sans-serif;font-size:13px;color:var(--muted);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
+  .faq-item.open .faq-a{max-height:300px;padding-top:12px}
+  .faq-item.open .arr{transform:rotate(180deg)}
+  .comparison{max-width:860px;margin:60px auto;padding:0 24px 60px}
+  .comp-title{font-size:26px;text-align:center;margin-bottom:32px}
+  .comp-table{width:100%;border-collapse:collapse;font-family:'DM Sans',sans-serif;font-size:13px}
+  .comp-table th{background:var(--bg2);padding:14px 16px;border:1px solid var(--border);color:var(--gold);text-align:left}
+  .comp-table td{padding:12px 16px;border:1px solid var(--border);color:var(--muted);vertical-align:top}
+  .comp-table tr:hover td{background:rgba(197,165,90,.03)}
+  .tick{color:var(--green)}
+  .cross{color:var(--red)}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="../index.php" class="brand">WanderStays</a>
+  <div class="nav-links">
+    <a href="../index.php" class="nav-link">Home</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="how-it-works.html" class="nav-link active">How It Works</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+    <a href="../index.php" class="btn-gold" style="padding:7px 18px;font-size:12px">Sign In</a>
+  </div>
+</nav>
+<div id="notif-area"></div>
+
+<div class="hiw-hero">
+  <p style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:12px">Simple by Design</p>
+  <h1>How WanderStays <em style="color:var(--gold)">works</em></h1>
+  <p>Whether you're looking for the perfect stay or want to list your property, the process is clear, fair, and fully transparent.</p>
+  <div class="role-tabs">
+    <button class="role-tab active" data-role="traveller">I'm a Traveller</button>
+    <button class="role-tab" data-role="owner">I'm an Owner</button>
+  </div>
+</div>
+
+<!-- Traveller Steps -->
+<div class="steps-section active" id="steps-traveller">
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <h3>Create your free account</h3>
+      <p>Sign up with your name, email and password. Select "Traveller" as your role. No credit card required to register — you only pay when you book.</p>
+      <div class="tip">💡 Your account stores your full booking history and preferences.</div>
+      <div class="step-img"><img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=700&q=70" alt="Sign up"></div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <h3>Explore destinations</h3>
+      <p>Browse destinations across 15+ Indian states. Filter by state, property type (hotel, resort, villa, Airbnb, homestay), and sort by minimum nightly price to find what fits your budget.</p>
+      <div class="tip">💡 Each destination card shows the starting price so you can compare before clicking in.</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <h3>Pick a property</h3>
+      <p>Click a destination to see all available properties. Browse photos, read descriptions, check amenities and guest reviews. Sort by price to find the best value.</p>
+      <div class="step-img"><img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=700&q=70" alt="Property"></div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">4</div>
+    <div class="step-body">
+      <h3>Send a booking request</h3>
+      <p>Choose your check-in and check-out dates, set your number of guests, and enter your offered price per night. You can bargain below the listed price — the owner decides whether to accept.</p>
+      <div class="tip">💡 All values are validated — no negative numbers, no past dates, guest count capped at property maximum.</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">5</div>
+    <div class="step-body">
+      <h3>Wait for the owner's response</h3>
+      <p>Your request status will show as <strong style="color:var(--yellow)">PENDING</strong>. The owner can accept, reject, or set an acceptance deadline. Track everything from your My Trips dashboard.</p>
+      <p style="margin-top:8px">If <strong style="color:var(--red)">REJECTED</strong>, you get one more chance to revise your price or cancel. If <strong style="color:var(--green)">ACCEPTED</strong>, you move to payment.</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">6</div>
+    <div class="step-body">
+      <h3>Pay securely</h3>
+      <p>Pay using your credit/debit card or UPI. Payment is processed only after the owner has accepted. The total is calculated based on your agreed nightly price × number of nights.</p>
+      <div class="step-img"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700&q=70" alt="Payment"></div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">7</div>
+    <div class="step-body">
+      <h3>Stay &amp; review</h3>
+      <p>Enjoy your stay! After payment is confirmed, you can leave a star rating and written review directly on the property page. Only guests who actually paid can review — keeping ratings honest.</p>
+      <div class="tip">💡 Reviews help other travellers and reward great owners with higher visibility.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Owner Steps -->
+<div class="steps-section" id="steps-owner">
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <h3>Register as an owner</h3>
+      <p>Create an account and select "Property Owner" as your role. Your dashboard is separate from travellers and designed around managing listings and requests.</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <h3>Add your destination</h3>
+      <p>Before listing a property, add the destination it belongs to — choose the state, primary property type, write a description, and upload up to 8 photos (drag &amp; drop supported).</p>
+      <div class="tip">💡 Destinations are shared across the platform, so your location helps other owners in the same area too.</div>
+      <div class="step-img"><img src="https://images.unsplash.com/photo-1477587458883-47145ed94245?w=700&q=70" alt="Destination"></div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <h3>List your property</h3>
+      <p>Add your property linked to a destination. Set your nightly price, max guests, amenities (comma separated), a description, and upload property photos. Everything saves to the database immediately.</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">4</div>
+    <div class="step-body">
+      <h3>Receive booking requests</h3>
+      <p>Your dashboard shows all incoming requests with the traveller's name, dates, guest count, and their offered price. If the offer is below your listed price, it's flagged clearly.</p>
+      <div class="step-img"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=700&q=70" alt="Dashboard"></div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">5</div>
+    <div class="step-body">
+      <h3>Accept or Reject with a deadline</h3>
+      <p>Click <strong style="color:var(--green)">Accept</strong> to confirm the booking. You can optionally set a deadline by which the traveller must complete payment. Click <strong style="color:var(--red)">Reject</strong> to decline — the traveller can then revise their offer once.</p>
+      <div class="tip">💡 Setting a deadline keeps bookings from going stale. The traveller sees it on their request status.</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">6</div>
+    <div class="step-body">
+      <h3>Track payments and reviews</h3>
+      <p>Your dashboard shows a PAID badge once the traveller completes payment, and tracks your total revenue. Guest reviews appear on your property cards so future travellers can see your reputation.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Comparison table -->
+<div class="comparison">
+  <h2 class="comp-title">Traveller vs Owner — at a glance</h2>
+  <table class="comp-table">
+    <thead>
+      <tr><th>Feature</th><th>Traveller</th><th>Owner</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Browse destinations &amp; properties</td><td class="tick">✓ Yes</td><td class="cross">– No (view own only)</td></tr>
+      <tr><td>Filter by state / type / price</td><td class="tick">✓ Yes</td><td class="cross">– N/A</td></tr>
+      <tr><td>Send booking requests</td><td class="tick">✓ Yes</td><td class="cross">– N/A</td></tr>
+      <tr><td>Bargain on price</td><td class="tick">✓ Yes</td><td class="cross">– N/A</td></tr>
+      <tr><td>Accept / Reject requests</td><td class="cross">– No</td><td class="tick">✓ Yes</td></tr>
+      <tr><td>Set acceptance deadlines</td><td class="cross">– No</td><td class="tick">✓ Yes</td></tr>
+      <tr><td>Make payments</td><td class="tick">✓ Yes (Card/UPI)</td><td class="cross">– N/A</td></tr>
+      <tr><td>Write reviews</td><td class="tick">✓ After paid stay</td><td class="cross">– No</td></tr>
+      <tr><td>Add destinations</td><td class="cross">– No</td><td class="tick">✓ Yes</td></tr>
+      <tr><td>Upload property photos</td><td class="cross">– No</td><td class="tick">✓ Yes (drag &amp; drop)</td></tr>
+      <tr><td>View revenue dashboard</td><td class="cross">– No</td><td class="tick">✓ Yes</td></tr>
+      <tr><td>Trip / booking history</td><td class="tick">✓ Yes</td><td class="tick">✓ Yes</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+  <div class="faq-inner">
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+    <p class="faq-sub">Can't find your answer? <a href="contact.html" style="color:var(--gold)">Contact us →</a></p>
+
+    <div class="faq-item">
+      <div class="faq-q">Can I bargain below the listed price?<span class="arr">▾</span></div>
+      <div class="faq-a">Yes — when you enter your offered price, you can go below the owner's listed rate. A warning will appear noting that the offer is below listed price. The owner then decides whether to accept, and can reject if the price is too low. You get one revision opportunity after a rejection.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What happens if the owner sets a deadline?<span class="arr">▾</span></div>
+      <div class="faq-a">If the owner sets an "accept by" deadline, you'll see it on your My Trips dashboard and on the property page. The deadline is informational — it's the owner's way of communicating urgency. Make sure to complete payment before then.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is my payment information stored?<span class="arr">▾</span></div>
+      <div class="faq-a">No. WanderStays does not store card numbers or CVVs. In production, payment processing would be handled by a PCI-compliant gateway such as Razorpay or Stripe. The current version records only the method used (card or UPI) for display purposes.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I cancel a booking?<span class="arr">▾</span></div>
+      <div class="faq-a">If your request is still pending, you can let it lapse. If it has been accepted but not yet paid, contact the owner directly. Cancellation and refund policies are set individually by each property owner.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do reviews work?<span class="arr">▾</span></div>
+      <div class="faq-a">Only travellers who completed a paid booking can leave a review on that property. This prevents fake or incentivised reviews. You can leave one review per booking. Reviews are visible to all travellers on the property page.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can an owner list multiple properties?<span class="arr">▾</span></div>
+      <div class="faq-a">Yes — there is no limit. An owner can add multiple destinations and list multiple properties under each. All listings appear on the owner's dashboard with individual booking histories and revenue tracking.</div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p class="sf">© 2025 WanderStays — Discover Extraordinary India &nbsp;|&nbsp;
+    <a href="about.html" style="color:var(--gold);text-decoration:none">About</a> &nbsp;·&nbsp;
+    <a href="how-it-works.html" style="color:var(--gold);text-decoration:none">How It Works</a> &nbsp;·&nbsp;
+    <a href="contact.html" style="color:var(--gold);text-decoration:none">Contact</a>
+  </p>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+// Role tab toggle
+document.querySelectorAll('.role-tab').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.role-tab').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    document.querySelectorAll('.steps-section').forEach(s => s.classList.remove('active'));
+    document.getElementById('steps-' + this.dataset.role).classList.add('active');
+  });
+});
+// FAQ accordion
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.addEventListener('click', function() {
+    const isOpen = this.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) this.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
